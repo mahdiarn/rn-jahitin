@@ -29,25 +29,17 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="NewUser" component={NewUserScreen} options={{ title: 'NewUser' }}/>
+    <Stack.Navigator screenOptions={{ headerShown: true }}>
+      <Stack.Screen name="NewUser" component={NewUserScreen} options={{ title: 'NewUser', headerShown: false }}/>
       <Stack.Screen name="Login" component={LoginScreen} options={{
         title: 'Login',
-        headerLeft: () => (
-          <Button
-            onPress={() => alert('This is a button!')}
-            title="Info"
-          />
-        ),
+        headerTitle: '',
+        headerBackTitle: '\n',
       }}/>
       <Stack.Screen name="Register" component={RegisterScreen} options={{
         title: 'Register',
-        headerLeft: () => (
-          <Button
-            onPress={() => alert('This is a button!')}
-            title="Info"
-          />
-        ),
+        headerTitle: '',
+        headerBackTitle: '\n',
       }}/>
       <Stack.Screen name="Root" component={BottomTabNavigator} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
