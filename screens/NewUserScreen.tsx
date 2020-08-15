@@ -39,12 +39,12 @@ export default function LoginScreen({
       <Text style={styles.title}>Jahitin</Text>
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonItemContainer}>
-            <TouchableOpacity onPress={() => navigation.replace('Login')} style={styles.loginTouchable}>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.loginTouchable}>
                 <Text style={styles.loginText}>Sign In</Text>
             </TouchableOpacity>
         </View>
         <View style={styles.buttonItemContainer}>
-            <TouchableOpacity onPress={() => navigation.replace('Register')} style={styles.registerTouchable}>
+            <TouchableOpacity onPress={() => navigation.navigate('Register')} style={styles.registerTouchable}>
                 <Text style={styles.registerText}>Sign Up</Text>
             </TouchableOpacity>
         </View>

@@ -26,16 +26,17 @@ export default function LoginScreen({
 
   const checkSession = () => {
     getTokenHook().then((token) => {
-      let decodedToken = jwtDecode(token)
-      if (decodedToken) {
-        // do something
+      try {
+        let decodedToken = jwtDecode(token)
+      } catch (e) {
+
       }
     })
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome!</Text>
+      <Text style={styles.title}>Sign Up</Text>
       <TextInput
         style={styles.loginInput}
         onChangeText={text => setUsername(text)}
@@ -52,9 +53,6 @@ export default function LoginScreen({
       />
       <TouchableOpacity onPress={() => login()} style={styles.loginTouchable}>
         <Text style={styles.linkText}>Login</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.replace('Register')} style={styles.registerTouchable}>
-        <Text style={styles.linkText}>Register</Text>
       </TouchableOpacity>
     </View>
   );
