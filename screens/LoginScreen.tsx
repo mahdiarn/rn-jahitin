@@ -1,7 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
-import jwt from 'jsonwebtoken';
+import jwtDecode from 'jwt-decode';
 import setTokenHook from '../hooks/storeToken'
 import getTokenHook from '../hooks/getToken'
 
@@ -26,7 +26,7 @@ export default function LoginScreen({
 
   const checkSession = () => {
     getTokenHook().then((token) => {
-      let decodedToken = jwt.decode(token)
+      let decodedToken = token ? jwtDecode(token) : false;
       if (decodedToken) {
         // do something
       }
