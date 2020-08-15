@@ -4,12 +4,19 @@ import * as React from 'react';
 import { ColorSchemeName, Button } from 'react-native';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
-import NewUserScreen from '../screens/NewUserScreen';
-import LoginScreen from '../screens/LoginScreen';
-import RegisterScreen from '../screens/RegisterScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
+import MainScreen from '../screens/MainScreen';
+import ListOfOrderScreen from '../screens/ListOfOrderScreen';
+import NewUserScreen from '../screens/NewUserScreen';
+import LoginScreen from '../screens/LoginScreen';
+import RegisterScreen from '../screens/RegisterScreen';
+import SearchVendorScreen from '../screens/SearchVendorScreen';
+import ChooseVendorScreen from '../screens/ChooseVendorScreen';
+import OrderScreen from '../screens/OrderScreen';
+import ProcessScreen from '../screens/ProcessScreen';
+import HistoryOrderScreen from '../screens/HistoryOrderScreen';
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -29,8 +36,25 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: true }}>
-      <Stack.Screen name="NewUser" component={NewUserScreen} options={{ title: 'NewUser', headerShown: false }}/>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Main" component={MainScreen} />
+      <Stack.Screen name="ListOfOrder" component={ListOfOrderScreen} />
+      <Stack.Screen name="SearchVendor" component={SearchVendorScreen} options={{
+        title: 'Search Vendor',
+      }}/>
+      <Stack.Screen name="ChooseVendor" component={ChooseVendorScreen} options={{
+        title: 'Choose Vendor',
+      }}/>
+      <Stack.Screen name="Order" component={OrderScreen} options={{
+        title: 'Order',
+      }}/>
+      <Stack.Screen name="Process" component={ProcessScreen} options={{
+        title: 'Process',
+      }}/>
+      <Stack.Screen name="History" component={HistoryOrderScreen} options={{
+        title: 'History',
+      }}/>
+      <Stack.Screen name="NewUser" component={NewUserScreen} options={{ title: 'NewUser' }}/>
       <Stack.Screen name="Login" component={LoginScreen} options={{
         title: 'Login',
         headerTitle: '',

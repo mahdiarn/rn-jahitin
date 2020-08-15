@@ -34,7 +34,7 @@ export default function LoginScreen({
       username: username,
       password: password,
      }).then((res) => {
-       console.log(res)
+       navigation.navigate('root')
      }).catch((err) => {
        alert('Error login')
      })
@@ -47,7 +47,7 @@ export default function LoginScreen({
   const checkSession = () => {
     getTokenHook().then((token) => {
       try {
-        let decodedToken = jwtDecode(token)
+        let decodedToken = token ? jwtDecode(token) : null
       } catch (e) {
 
       }
