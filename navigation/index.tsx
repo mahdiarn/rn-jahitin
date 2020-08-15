@@ -57,21 +57,13 @@ function RootNavigator() {
       <Stack.Screen name="NewUser" component={NewUserScreen} options={{ title: 'NewUser' }}/>
       <Stack.Screen name="Login" component={LoginScreen} options={{
         title: 'Login',
-        headerLeft: () => (
-          <Button
-            onPress={() => alert('This is a button!')}
-            title="Info"
-          />
-        ),
+        headerTitle: '',
+        headerBackTitle: '\n',
       }}/>
       <Stack.Screen name="Register" component={RegisterScreen} options={{
         title: 'Register',
-        headerLeft: () => (
-          <Button
-            onPress={() => alert('This is a button!')}
-            title="Info"
-          />
-        ),
+        headerTitle: '',
+        headerBackTitle: '\n',
       }}/>
       <Stack.Screen name="Root" component={BottomTabNavigator} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
