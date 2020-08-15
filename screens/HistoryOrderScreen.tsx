@@ -28,7 +28,7 @@ let mockData: Array<Order>;
     type: 'Sweater',
     qty: 9,
     priceEstimated: 9,
-    status: 'In-Progress'
+    status: 'Done'
   },
   {
     id: 2,
@@ -38,7 +38,7 @@ let mockData: Array<Order>;
     type: 'Sweater',
     qty: 9,
     priceEstimated: 9,
-    status: 'In-Progress'
+    status: 'Done'
   },
   {
     id: 3,
@@ -48,7 +48,7 @@ let mockData: Array<Order>;
     type: 'Sweater',
     qty: 9,
     priceEstimated: 9,
-    status: 'Rejected'
+    status: 'Done'
   },
 ]; 
 

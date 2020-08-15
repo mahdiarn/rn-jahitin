@@ -65,7 +65,7 @@ export default function MainScreen({
   }
 
   const createOrder = () => {
-    navigation.navigate('CreateOrder')
+    navigation.navigate('SearchVendor')
   }
   
   return (

@@ -8,84 +8,76 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import { SearchBar } from '../components/SearchBar';
 
-interface Order {
-  id: number,
-  name: string,
-  location: string,
-  materials: string,
-  type: string,
-  qty: number,
-  priceEstimated: number,
-  status: string,
+interface Tailor {
+  id: number;
+  name: string;
+  location: string;
+  materials: string;
+  rating: number;
+  priceEstimated: number;
+  typeOfWork: string;
 }
 
-let mockData: Array<Order>;
+let mockData: Array<Tailor>;
   mockData = [{
     id: 1,
     name: 'Jokowi',
     location: 'Bogor',
     materials: 'Kayu',
-    type: 'Sweater',
-    qty: 9,
-    priceEstimated: 9,
-    status: 'In-Progress'
+    rating: 3,
+    priceEstimated: 5000,
+    typeOfWork: 'Satuan',
   },
   {
     id: 2,
     name: 'Gibran',
     location: 'Solo',
     materials: 'Wol',
-    type: 'Sweater',
-    qty: 9,
-    priceEstimated: 9,
-    status: 'In-Progress'
+    rating: 4.5,
+    priceEstimated: 15000,
+    typeOfWork: 'Satuan',
   },
   {
     id: 3,
     name: 'Jan Ethes',
     location: 'Jakarta',
     materials: 'Katun',
-    type: 'Sweater',
-    qty: 9,
-    priceEstimated: 9,
-    status: 'Rejected'
+    rating: 5,
+    priceEstimated: 5000,
+    typeOfWork: 'Grosiran',
   },
 ]; 
 
 export default function MainScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, 'NotFound'>) {
-  const [listOfOrder, setlistOfOrder] = useState<Order[]>([])
+  const [listOfTailor, setlistOfTailor] = useState<Tailor[]>([])
   const [query, setQuery] = useState<String>('');
 
   useEffect(() => {
-    setlistOfOrder(mockData);
+    setlistOfTailor(mockData);
   }, [])
 
-  const renderItem: ListRenderItem<Order> = ({ item }) => (
+  const renderItem: ListRenderItem<Tailor> = ({ item }) => (
     <View style={styles.item}>
-    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 10}}>
-      <Text style={styles.textLarge}>{item.name}</Text>
-      <Text style={styles.textSmall}>{item.status}</Text>
-    </View>
-    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 10}}>
-      <View style={{flex: 1, flexDirection: 'column-reverse', justifyContent: 'flex-start', paddingBottom: 30}}>
-        <Text style={styles.textSmall}>{`${item.materials} - ${item.type}`}</Text>
-        <Text style={styles.textSmall}>{`Pesan ${item.qty}`}</Text>
-        <Text style={styles.textSmall}>{`Rp ${item.priceEstimated}`}</Text>
+      <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 10}}>
+        <Text style={styles.textLarge}>{item.name}</Text>
+        <Text style={styles.textRating}>{item.rating}</Text>
+        <Text style={styles.textLoc}>{item.location}</Text>
       </View>
-      {
-        item.status === 'Rejected' && (
-          <TouchableOpacity
-            style={styles.button}
-            onPress={createOrder}
-          >
-            <Text style={styles.textLarge} >Pesan</Text>
-          </TouchableOpacity>
-        )
-      }
+      <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 10}}>
+        <View style={{flex: 1, flexDirection: 'column-reverse', justifyContent: 'flex-start', paddingBottom: 30}}>
+          <Text style={styles.textSmall}>{item.materials}</Text>
+          <Text style={styles.textSmall}>{item.materials}</Text>
+        </View>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={createOrder}
+        >
+          <Text style={styles.textLarge}>Pesan</Text>
+        </TouchableOpacity>
+      </View>
     </View>
-  </View>
   );
 
   const search = (text: string) => {
@@ -93,17 +85,14 @@ export default function MainScreen({
   }
 
   const createOrder = () => {
-    navigation.navigate('SearchVendor')
+    navigation.navigate('Order')
   }
   
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>List of Order</Text>
-      <SearchBar
-        search={search}
-      />
-      <FlatList<Order>
-        data={listOfOrder}
+      <Text style={styles.title}>Hasil Pencarian</Text>
+      <FlatList<Tailor>
+        data={listOfTailor}
         renderItem={renderItem}
         keyExtractor={item => String(item.id)}
       />
@@ -125,7 +114,11 @@ const styles = StyleSheet.create({
   textLarge: {
     fontSize: 24,
   },
-  textMedium: {
+  textRating: {
+    fontSize: 18,
+    color: "#03A71A",
+  },
+  textLoc: {
     fontSize: 18,
   },
   textSmall: {
@@ -138,7 +131,6 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: '#000000',
   },
-
   button: {
     alignItems: "center",
     textAlignVertical: "bottom",

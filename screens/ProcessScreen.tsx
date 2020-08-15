@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet} from 'react-native';
+import { StyleSheet, Image} from 'react-native';
 
 import { Text, View } from '../components/Themed';
 import { RootStackParamList } from '../types';
@@ -10,17 +10,20 @@ export default function MainScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, 'NotFound'>) {
   const order = () => {
-    navigation.navigate('Process')
+    navigation.navigate('ListOfOrder')
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Ringkasan Pembelian</Text>
+      <View style={styles.header}>
+        <Image
+          style={styles.tinyLogo}
+          source={require('../assets/images/thumbs.png')}
+        />
+        <Text style={styles.title}>Pesanan Anda sedang diproses</Text>
+      </View>
       <View style={styles.smallContainer}>
         <Text style={styles.textLarge}>Penjahit ABC</Text>
-        <Text style={styles.textSmall}>ALAMAT: Bingo, Bandung</Text>
-        <Text style={styles.textSmall}>Sweater - Wol </Text>
-        <Text style={styles.textLarge}>Pilih Nominal Untuk Dipesan</Text>
         <Text style={styles.textSmall}>XS: 0</Text>
         <Text style={styles.textSmall}>XS: 0</Text>
         <Text style={styles.textSmall}>S: 0</Text>
@@ -34,7 +37,7 @@ export default function MainScreen({
         style={styles.button}
         onPress={order}
     >
-        <Text style={styles.textLarge} >Pesan</Text>
+        <Text style={styles.textLarge}>Ke Daftar Pesanan</Text>
     </TouchableOpacity>
     </View>
   );
@@ -44,6 +47,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 22,
+    backgroundColor: '#edd59e',
+  },
+  header: {
+    paddingTop: 23,
+    alignItems: 'center',
     backgroundColor: '#edd59e',
   },
   item: {
@@ -61,6 +69,10 @@ const styles = StyleSheet.create({
   textLoc: {
     fontSize: 16,
     padding: 5
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
   },
   title: {
     textAlign: 'left',
