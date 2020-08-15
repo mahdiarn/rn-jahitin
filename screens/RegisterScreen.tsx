@@ -17,7 +17,7 @@ export default function LoginScreen({
   },[])
 
   const login = () => {
-    navigation.navigate('Root')
+    // login
   }
 
   const setToken = () => {
@@ -26,10 +26,9 @@ export default function LoginScreen({
 
   const checkSession = () => {
     getTokenHook().then((token) => {
-      try {
-        let decodedToken = token ? jwtDecode(token) : null
-      } catch (e) {
-
+      let decodedToken = jwtDecode(token)
+      if (decodedToken) {
+        // do something
       }
     })
   }
@@ -53,6 +52,9 @@ export default function LoginScreen({
       />
       <TouchableOpacity onPress={() => login()} style={styles.loginTouchable}>
         <Text style={styles.linkText}>Login</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.replace('Register')} style={styles.registerTouchable}>
+        <Text style={styles.linkText}>Register</Text>
       </TouchableOpacity>
     </View>
   );

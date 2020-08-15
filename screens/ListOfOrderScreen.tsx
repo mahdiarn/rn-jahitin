@@ -79,12 +79,6 @@ export default function MainScreen({
         renderItem={renderItem}
         keyExtractor={item => String(item.id)}
       />
-      <TouchableOpacity
-        style={styles.button}
-        onPress={createOrder}
-      >
-        <Text>Create Order</Text>
-      </TouchableOpacity>
     </View>
   );
 }

@@ -17,7 +17,7 @@ export default function LoginScreen({
   },[])
 
   const login = () => {
-    navigation.navigate('Root')
+    // login
   }
 
   const setToken = () => {
@@ -27,7 +27,7 @@ export default function LoginScreen({
   const checkSession = () => {
     getTokenHook().then((token) => {
       try {
-        let decodedToken = token ? jwtDecode(token) : null
+        let decodedToken = jwtDecode(token)
       } catch (e) {
 
       }
@@ -36,24 +36,19 @@ export default function LoginScreen({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome!</Text>
-      <TextInput
-        style={styles.loginInput}
-        onChangeText={text => setUsername(text)}
-        value={username}
-        placeholder={`Username`}
-      />
-      <TextInput
-        style={styles.loginInput}
-        onChangeText={text => setPassword(text)}
-        value={password}
-        placeholder={`Password`}
-        textContentType="password"
-        secureTextEntry
-      />
-      <TouchableOpacity onPress={() => login()} style={styles.loginTouchable}>
-        <Text style={styles.linkText}>Login</Text>
-      </TouchableOpacity>
+      <Text style={styles.title}>Jahitin</Text>
+      <View style={styles.buttonsContainer}>
+        <View style={styles.buttonItemContainer}>
+            <TouchableOpacity onPress={() => navigation.replace('Login')} style={styles.loginTouchable}>
+                <Text style={styles.loginText}>Sign In</Text>
+            </TouchableOpacity>
+        </View>
+        <View style={styles.buttonItemContainer}>
+            <TouchableOpacity onPress={() => navigation.replace('Register')} style={styles.registerTouchable}>
+                <Text style={styles.registerText}>Sign Up</Text>
+            </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 }
@@ -61,38 +56,51 @@ export default function LoginScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#edd59e',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  buttonItemContainer: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
   },
   title: {
-    fontSize: 20,
+    fontSize: 100,
     fontWeight: 'bold',
+    color: '#fff'
   },
   loginTouchable: {
     marginTop: 15,
     paddingVertical: 15,
-    backgroundColor: '#ddd',
-    width: '100%'
+    backgroundColor: '#EDAC9E',
+    width: '100%',
+    borderRadius: 20,
   },
   registerTouchable: {
     marginTop: 15,
     paddingVertical: 15,
-    width: '100%'
+    backgroundColor: '#fff',
+    width: '100%',
+    borderRadius: 20,
   },
-  linkText: {
+  loginText: {
     fontSize: 14,
-    color: '#2e78b7',
+    color: '#fff',
     textAlign: 'center',
   },
-  loginInput: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1 ,
-    marginTop: 10,
-    paddingLeft: 10,
-    paddingRight: 10,
+  registerText: {
+    fontSize: 14,
+    color: '#EDAC9E',
+    textAlign: 'center',
   },
 });
 
