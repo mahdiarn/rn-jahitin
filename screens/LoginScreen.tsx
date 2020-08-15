@@ -17,7 +17,7 @@ export default function LoginScreen({
   },[])
 
   const login = () => {
-    // login
+    navigation.navigate('Root')
   }
 
   const setToken = () => {

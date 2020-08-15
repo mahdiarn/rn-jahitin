@@ -70,7 +70,7 @@ export default function MainScreen({
   
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>List of Tailor</Text>
+      <Text style={styles.title}>List of Order</Text>
       <SearchBar
         search={search}
       />
@@ -83,7 +83,7 @@ export default function MainScreen({
         style={styles.button}
         onPress={createOrder}
       >
-        <Text style={styles.textLarge} >Create Order</Text>
+        <Text>Create Order</Text>
       </TouchableOpacity>
     </View>
   );
@@ -119,10 +119,7 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     textAlignVertical: "bottom",
-    backgroundColor: "#FFFFFF",
-    color: "#EDAC9E",
-    margin: 22,
-    padding: 10,
-    borderRadius: 20,
+    backgroundColor: "#DDDDDD",
+    padding: 10
   },
 });

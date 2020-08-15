@@ -8,6 +8,8 @@ import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import MainScreen from '../screens/MainScreen';
+import ListOfOrderScreen from '../screens/ListOfOrderScreen';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -16,18 +18,18 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="List Of Tailor"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+        name="List Of Tailor"
+        component={MainScreen}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name="List Of Order"
+        component={ListOfOrderScreen}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
@@ -36,21 +38,17 @@ export default function BottomTabNavigator() {
   );
 }
 
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
 function TabBarIcon(props: { name: string; color: string }) {
   return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
-// Each tab has its own navigation stack, you can read more about this pattern here:
-// https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 const TabOneStack = createStackNavigator<TabOneParamList>();
 
 function TabOneNavigator() {
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
-        name="TabOneScreen"
+        name="MainScreen"
         component={TabOneScreen}
         options={{ headerTitle: 'Tab One Title' }}
       />
@@ -64,7 +62,7 @@ function TabTwoNavigator() {
   return (
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
-        name="TabTwoScreen"
+        name="ListOfOrderScreen"
         component={TabTwoScreen}
         options={{ headerTitle: 'Tab Two Title' }}
       />

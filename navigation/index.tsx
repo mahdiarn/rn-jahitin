@@ -8,6 +8,8 @@ import LoginScreen from '../screens/LoginScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
+import MainScreen from '../screens/MainScreen';
+import ListOfOrderScreen from '../screens/ListOfOrderScreen';
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -31,6 +33,8 @@ function RootNavigator() {
       <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Login' }} />
       <Stack.Screen name="Register" component={LoginScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="Root" component={BottomTabNavigator} />
+      <Stack.Screen name="Main" component={MainScreen} />
+      <Stack.Screen name="ListOfOrder" component={ListOfOrderScreen} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );
