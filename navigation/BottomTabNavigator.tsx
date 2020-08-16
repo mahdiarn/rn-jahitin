@@ -8,7 +8,7 @@ import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList } from '../types';
-import MainScreen from '../screens/MainScreen';
+import ListOfTailorScreen from '../screens/ListOfTailorScreen';
 import ListOfOrderScreen from '../screens/ListOfOrderScreen';
 import HistoryOrderScreen from '../screens/HistoryOrderScreen';
 
@@ -19,13 +19,14 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="List Of Tailor"
+      initialRouteName="ListOfTailor"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="List Of Tailor"
-        component={MainScreen}
+        name="ListOfTailor"
+        component={ListOfTailorScreen}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          headerShown: false,
         }}
       />
       <BottomTab.Screen
