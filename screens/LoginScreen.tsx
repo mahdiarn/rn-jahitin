@@ -57,7 +57,7 @@ export default function LoginScreen({
   const roleMapping = () => {
     switch(role) {
       case 'customer':
-        return 'Pembeli'
+        return 'Konsumen'
       case 'tailor':
         return 'Penjahit'
     }
@@ -100,7 +100,7 @@ export default function LoginScreen({
               }
               mode='dialog'
             >
-              <Picker.Item label="Pembeli" value="customer" />
+              <Picker.Item label="Konsumen" value="customer" />
               <Picker.Item label="Penjahit" value="tailor" />
             </Picker>
           ) : (<View />)
@@ -116,7 +116,7 @@ export default function LoginScreen({
             />
             <Text style={styles.rememberText}>Remember me</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.rememberContainer} onPress={() => {setToggleRemember(!toggleRemember)}}>
+          <TouchableOpacity style={styles.rememberContainer} onPress={() => {}}>
             <Text style={styles.rememberText}>Forgot your Password?</Text>
           </TouchableOpacity>
         </View>
@@ -166,11 +166,13 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'left',
+    color: '#edd59e',
   },
   headingFirst: {
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'left',
+    color: '#edd59e',
   },
   loginTouchable: {
     marginTop: 15,
