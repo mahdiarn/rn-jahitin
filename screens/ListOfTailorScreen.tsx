@@ -40,7 +40,7 @@ let mockData: Array<Tailor>;
   },
 ]; 
 
-export default function MainScreen({
+export default function ListOfTailorScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, 'NotFound'>) {
   const [listOfTailor, setlistOfTailor] = useState<Tailor[]>([])

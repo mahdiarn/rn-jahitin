@@ -7,7 +7,7 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
-import MainScreen from '../screens/MainScreen';
+import ListOfTailorScreen from '../screens/ListOfTailorScreen';
 import ListOfOrderScreen from '../screens/ListOfOrderScreen';
 import NewUserScreen from '../screens/NewUserScreen';
 import LoginScreen from '../screens/LoginScreen';
@@ -36,8 +36,19 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Main" component={MainScreen} />
+    <Stack.Navigator screenOptions={{ headerShown: true }}>
+      <Stack.Screen name="NewUser" component={NewUserScreen} options={{ title: '', headerShown: false }}/>
+      <Stack.Screen name="Login" component={LoginScreen} options={{
+        title: 'Login',
+        headerTitle: '',
+        headerBackTitle: '\n',
+      }}/>
+      <Stack.Screen name="Register" component={RegisterScreen} options={{
+        title: 'Register',
+        headerTitle: '',
+        headerBackTitle: '\n',
+      }}/>
+      <Stack.Screen name="ListOfTailor" component={ListOfTailorScreen} options={{headerShown: false}} />
       <Stack.Screen name="ListOfOrder" component={ListOfOrderScreen} />
       <Stack.Screen name="SearchVendor" component={SearchVendorScreen} options={{
         title: 'Search Vendor',
@@ -53,17 +64,6 @@ function RootNavigator() {
       }}/>
       <Stack.Screen name="History" component={HistoryOrderScreen} options={{
         title: 'History',
-      }}/>
-      <Stack.Screen name="NewUser" component={NewUserScreen} options={{ title: 'NewUser' }}/>
-      <Stack.Screen name="Login" component={LoginScreen} options={{
-        title: 'Login',
-        headerTitle: '',
-        headerBackTitle: '\n',
-      }}/>
-      <Stack.Screen name="Register" component={RegisterScreen} options={{
-        title: 'Register',
-        headerTitle: '',
-        headerBackTitle: '\n',
       }}/>
       <Stack.Screen name="Root" component={BottomTabNavigator} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
