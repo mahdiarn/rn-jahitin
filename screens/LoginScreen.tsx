@@ -30,14 +30,20 @@ export default function LoginScreen({
          Accept: 'application/json'
       },
     });
-    client.post('/session/login',{
-      username: username,
-      password: password,
-     }).then((res) => {
-       navigation.navigate('root')
-     }).catch((err) => {
-       alert('Error login')
-     })
+    // client.post('/session/login',{
+    //   username: username,
+    //   password: password,
+    //  }).then((res) => {
+    //    navigation.navigate('root')
+    //  }).catch((err) => {
+    //    alert('Error login')
+    //  })
+    switch(role) {
+      case 'customer':
+        return navigation.replace('ListOfTailor')
+      case 'tailor':
+        return 'Penjahit'
+    }
   }
 
   const setToken = () => {
